@@ -2,6 +2,7 @@
 import * as beet from "@metaplex-foundation/beet";
 import * as beetSolana from "@metaplex-foundation/beet-solana";
 import { Keypair, PublicKey } from "@solana/web3.js";
+import fs from "fs";
 
 class AddressBook {
     constructor(
@@ -21,17 +22,22 @@ class AddressBook {
     );
 }
 
-let friendKeypair = Keypair.generate();
-let anotherFriendKeypair = Keypair.generate();
+// let friendKeypair = Keypair.generate();
+// let anotherFriendKeypair = Keypair.generate();
 
-let adb = new AddressBook(new Set([friendKeypair.publicKey, anotherFriendKeypair.publicKey]))
-console.log(adb);
+// let adb = new AddressBook(new Set([friendKeypair.publicKey, anotherFriendKeypair.publicKey]))
+// console.log(adb);
 
 
-let [b] = AddressBook.struct.serialize(adb);
-console.log(b);
+// let [b] = AddressBook.struct.serialize(adb);
+// console.log(b);
 
-let [rehydrated] = AddressBook.struct.deserialize(b); 
+// let [rehydrated] = AddressBook.struct.deserialize(b); 
 
-console.log("rehydrated");
-console.log(rehydrated);
+// console.log("rehydrated");
+// console.log(rehydrated);
+
+const addressBookBytes = fs.readFileSync("./addressbook.bin");
+const addressBook = AddressBook.struct.deserialize(addressBookBytes);
+
+console.log('addressBook?', addressBook);
