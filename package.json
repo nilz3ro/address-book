@@ -6,6 +6,7 @@
   "author": "nil",
   "license": "MIT",
   "dependencies": {
+    "typescript": "4.7.2",
     "@metaplex-foundation/beet": "^0.7.1",
     "@metaplex-foundation/beet-solana": "^0.4.0",
     "@solana/web3.js": "^1.76.0"
